@@ -1,24 +1,26 @@
-## Resource Stress Script
+# VM Resource Stress Script
 
-This script can be used to stress the CPU, RAM, and network on a Linux system for every two hours using crontab. The script uses various commands and tools to fully utilize the system resources and test their performance.
+This Bash/Shell script provides a convenient way to stress test the resources of a virtual machine using the `stress` and `iperf` commands. It allows you to stress the CPU and memory, as well as run an iperf server and client for network performance testing.
 
-### Prerequisites
-* Linux operating system
-* `stress` command (for stress test)
-* `nload` command (for monitor network usage)
+## Prerequisites
 
-### Usage
-To use this script, follow these steps:
-1. Save the script file and make it executable (`chmod +x resource-stress.sh`).
-2. Add a crontab entry to run the script every two hours:
+Before running this script, ensure that the following prerequisites are met:
 
-    ```bash
-    0 */2 * * * /path/to/resource-stress.sh
-    ```
-3. Save the crontab file and wait for the script to run on the scheduled intervals.
+- The `stress` command should be installed on the virtual machine. You can install it using your package manager (e.g., `apt`, `yum`).
+- The `iperf` command should also be installed. Use your package manager to install it if it's not already installed.
 
-### Script Details
-* **--cpu N** and **--io N**: spawn N workers spinning on sqrt()
-* **--vm N**: spawn N workers spinning on malloc()/free()
-* **--vm-bytes B**: malloc B bytes per vm worker (default is 256MB)
-* **--vm-keep**: redirty memory instead of freeing and reallocating
+## Usage
+
+1. Clone the repository or download the script file.
+2. Open a terminal and navigate to the directory containing the script.
+3. Make the script executable if necessary: `chmod +x resource_stress.sh`
+4. Run the script: `./resource_stress.sh`
+
+## Note
+
+- It's recommended to have a thorough understanding of the implications of stress testing on your virtual machine before running this script.
+- Use caution when stressing resources, as it may impact the performance and stability of your virtual machine.
+
+## License
+
+This script is released under the [MIT License](LICENSE).
